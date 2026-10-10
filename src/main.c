@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <string.h>
 
 #include "../include/commands.h"
 #include "../include/ui.h"
@@ -12,7 +13,10 @@ int main(void) {
     while (running) {
         // Függvény a parancssor kinézetének kezeléséhez
         // Függvény a bemenet kezeléséhez
-        read();
+        next_command();
+        char tokens[10][32];
+        read(tokens);
+        
     }
 
     return 0;

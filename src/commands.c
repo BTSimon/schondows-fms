@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-void tokenize(char *input, int inputSize, char output[][32], int paramsSize) {
+void tokenize(char *input, int inputSize, char output[][32]) {
     int tokenStart = 0;
     int tokenNum = 0;
 
@@ -29,12 +29,11 @@ void tokenize(char *input, int inputSize, char output[][32], int paramsSize) {
 
 } 
 
-void read(void) {
+void read(char tokens[][32]) {
     char input[128];
     fgets(input, sizeof(input), stdin);
 
-    char output[10][32];
     int inputsize = strlen(input);
-    tokenize(input, inputsize, output, 10);
-    printf("%s\n", output[0]);
+    tokenize(input, inputsize, tokens);
+
 }

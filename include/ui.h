@@ -2,5 +2,6 @@
 #define UI_H
 
 void display_startup(void);
+void next_command(void);
 
 #endif

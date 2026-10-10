@@ -10,3 +10,7 @@ void display_startup(void) {
     printf("Welcome to the first iteration of Schöndows FMS\n");
 }
 
+void next_command(void) {
+    printf("\n> ");
+}
+
