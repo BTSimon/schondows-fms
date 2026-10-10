@@ -14,13 +14,13 @@ int main(void) {
         // Függvény a parancssor kinézetének kezeléséhez
         // Függvény a bemenet kezeléséhez
         next_command();
-        char tokens[10][32];
-        read(tokens);
-        if (verify_commands(tokens[0])) {
-            printf("Valid command!\n");
-        } else {
+        parseLine tokens;
+        read_input(&tokens);
+        if (!verify_commands(tokens.command)) {
             printf("Invalid command\n");
+            continue;
         }
+        
         
     }
 

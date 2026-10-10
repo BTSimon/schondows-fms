@@ -1,53 +1,47 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "../include/commands.h"
+
 #define VALID_COMMANDS {"pwd", "ls", "cd", "cls"}
 #define VALID_COMMANDS_NUM 4
 
 const char *valid_commands[] = VALID_COMMANDS;
 
-void tokenize(char *input, int inputSize, char output[][32]) {
+void tokenize(char *input, int inputSize, parseLine *output) {
     int tokenStart = 0;
     int tokenNum = 0;
 
-    for(int i = 0; i<inputSize; i++) {
-        if (input[i] == ' ') {
+    for (int i = 0; i <= inputSize; i++) {
+        if (input[i] == ' ' || input[i] == '\0') {
+            int length = i - tokenStart;
 
-            int charCount = 0;
+            if (length > 0) {
+                if (tokenNum == 0) {
+                    strncpy(output->command, input + tokenStart, length);
+                    output->command[length] = '\0';
+                } else {
+                    strncpy(output->params[tokenNum - 1], input + tokenStart, length);
+                    output->params[tokenNum - 1][length] = '\0';
+                }
 
-            for (int j = tokenStart; j<i; j++) {
-                output[tokenNum][charCount] = input[j];
-                charCount++;
+                tokenNum++;
             }
 
-            output[tokenNum][charCount] = '\0';
-            tokenStart = i+1;
-            tokenNum++;
-        } 
-    }
-
-    if (tokenStart < inputSize) {
-        int charCount = 0;
-
-        for (int j = tokenStart; j < inputSize; j++) {
-            output[tokenNum][charCount] = input[j];
-            charCount++;
+            tokenStart = i + 1;
         }
-
-        output[tokenNum][charCount] = '\0';
-        tokenNum++;
     }
 
-} 
+    output->paramCount = tokenNum > 0 ? tokenNum - 1 : 0;
+}
 
-void read(char tokens[][32]) {
+void read_input(parseLine *tokens) {
     char input[128];
     fgets(input, sizeof(input), stdin);
 
     input[strcspn(input, "\n")] = '\0';
     int inputSize = strlen(input);
     tokenize(input, inputSize, tokens);
-
 }
 
 int verify_commands(char *command) {
