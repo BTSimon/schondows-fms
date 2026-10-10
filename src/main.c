@@ -16,6 +16,11 @@ int main(void) {
         next_command();
         char tokens[10][32];
         read(tokens);
+        if (verify_commands(tokens[0])) {
+            printf("Valid command!\n");
+        } else {
+            printf("Invalid command\n");
+        }
         
     }
 
