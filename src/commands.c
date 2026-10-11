@@ -3,6 +3,7 @@
 
 #include "../include/commands.h"
 #include "../include/ui.h"
+#include "../include/main.h"
 
 const char *valid_commands[] = VALID_COMMANDS;
 
@@ -54,5 +55,9 @@ int verify_commands(char *command) {
 void process_commands(parseLine *tokens) {
     if (strcmp(tokens->command, "cls") == 0) {
         clear();
+    } 
+    else if (strcmp(tokens->command, "shutdown") == 0) {
+        running = false;
+        display_end_graceful(0);
     }
 }

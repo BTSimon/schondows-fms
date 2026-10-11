@@ -4,6 +4,7 @@
 
 #include "../include/commands.h"
 #include "../include/ui.h"
+#include "../include/main.h"
 
 bool running = true;
 

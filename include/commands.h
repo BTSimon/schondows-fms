@@ -1,8 +1,8 @@
 #ifndef COMMANDS_H
 #define COMMANDS_H
 
-#define VALID_COMMANDS {"pwd", "ls", "cd", "cls"}
-#define VALID_COMMANDS_NUM 4
+#define VALID_COMMANDS {"pwd", "ls", "cd", "cls", "shutdown"}
+#define VALID_COMMANDS_NUM 5
 
 typedef struct parseLine {
     char command[32];
