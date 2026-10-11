@@ -54,10 +54,16 @@ int verify_commands(char *command) {
 
 void process_commands(parseLine *tokens) {
     if (strcmp(tokens->command, "cls") == 0) {
+        if (tokens->paramCount > 0) {
+            error("Too many parameters!\n"); 
+        }
         clear();
     } 
     else if (strcmp(tokens->command, "shutdown") == 0) {
-        running = false;
+        if (tokens->paramCount > 0) {
+            error("Too many parameters!\n"); 
+        }
         display_end_graceful(0);
+        running = false;
     }
 }

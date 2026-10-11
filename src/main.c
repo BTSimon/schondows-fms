@@ -14,15 +14,18 @@ int main(void) {
     while (running) {
         // Függvény a parancssor kinézetének kezeléséhez
         // Függvény a bemenet kezeléséhez
+
         next_command();
+        
         parseLine tokens;
         read_input(&tokens);
+        
         if (!verify_commands(tokens.command)) {
-            printf("Invalid command\n");
+            error("Invalid command\n");
             continue;
         }
-        process_commands(&tokens);
         
+        process_commands(&tokens);
         
     }
 

@@ -6,5 +6,6 @@ void display_startup(void);
 void next_command(void);
 void display_end_graceful(int exit_code);
 void display_end_terminated(int exit_code);
+void error(char *error_text);
 
 #endif

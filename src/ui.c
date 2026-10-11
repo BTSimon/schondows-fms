@@ -1,6 +1,12 @@
 #include <stdio.h>
 #include "../include/ui.h"
 
+/*
+
+    UI.C file. The goal here is to modularise every UI action to this file, even if it is just 1 print call (yet)
+
+*/
+
 #define RESET   "\033[0m"
 #define RED     "\033[31m"
 #define GREEN   "\033[32m"
@@ -18,7 +24,7 @@ void display_startup(void) {
 }
 
 void next_command(void) {
-    printf("\n> ");
+    printf("> ");
 }
 
 void display_end_graceful(int exit_code) {
@@ -27,4 +33,8 @@ void display_end_graceful(int exit_code) {
 
 void display_end_terminated(int exit_code) {
     printf("Process shutdown with exit code " RED "%d\n" RESET, exit_code);
+}
+
+void error(char *error_text) {
+    printf(RED "%s" RESET, error_text);
 }
