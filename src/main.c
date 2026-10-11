@@ -20,6 +20,7 @@ int main(void) {
             printf("Invalid command\n");
             continue;
         }
+        process_commands(&tokens);
         
         
     }

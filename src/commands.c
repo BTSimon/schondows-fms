@@ -2,9 +2,7 @@
 #include <string.h>
 
 #include "../include/commands.h"
-
-#define VALID_COMMANDS {"pwd", "ls", "cd", "cls"}
-#define VALID_COMMANDS_NUM 4
+#include "../include/ui.h"
 
 const char *valid_commands[] = VALID_COMMANDS;
 
@@ -51,4 +49,10 @@ int verify_commands(char *command) {
         }
     }
     return 0;
+}
+
+void process_commands(parseLine *tokens) {
+    if (strcmp(tokens->command, "cls") == 0) {
+        clear();
+    }
 }
