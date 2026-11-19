@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include <string.h>
+#include <math.h>
 
 #include "../include/commands.h"
 #include "../include/ui.h"
 #include "../include/main.h"
+
 
 const char *valid_commands[] = VALID_COMMANDS;
 
