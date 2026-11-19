@@ -4,12 +4,14 @@
 #include "../include/commands.h"
 #include "../include/ui.h"
 
+
+
 const char *valid_commands[] = VALID_COMMANDS;
 
 void tokenize(char *input, int inputSize, parseLine *output) {
     int tokenStart = 0;
     int tokenNum = 0;
-
+    printf("Szia");
     for (int i = 0; i <= inputSize; i++) {
         if (input[i] == ' ' || input[i] == '\0') {
             int length = i - tokenStart;
